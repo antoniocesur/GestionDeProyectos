@@ -2,6 +2,7 @@ package programa.para.gestionar.proyectos.de.consultoria.modelo;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Formula;
 
 import java.time.LocalDate;
 
@@ -19,9 +20,11 @@ public class Tarea {
     private LocalDate fechaInicio;
     @Column
     private LocalDate fechaFin;
-    @Column
-    private LocalDate tiempoTrabajado;
-    @Column
+
+    @Formula(value = "(SELECT SUM(horas) FROM actividad a WHERE a.tarea_id=id")
+    private int tiempoTrabajado;
+
+    @ManyToOne
     private Usuario usuario;
 
 }

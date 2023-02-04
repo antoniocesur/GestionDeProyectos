@@ -2,7 +2,7 @@ package programa.para.gestionar.proyectos.de.consultoria.servicios;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import programa.para.gestionar.proyectos.de.consultoria.departamento.UsuarioDto;
+import programa.para.gestionar.proyectos.de.consultoria.dto.UsuarioDto;
 import programa.para.gestionar.proyectos.de.consultoria.modelo.Rol;
 import programa.para.gestionar.proyectos.de.consultoria.modelo.Usuario;
 import programa.para.gestionar.proyectos.de.consultoria.repositorios.RolRepositorio;
@@ -30,7 +30,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
     @Override
     public void saveUsuario(UsuarioDto usuarioDto) {
         Usuario usuario = new Usuario();
-        usuario.setNombre(usuarioDto.getPrimerNombre()+ " " + usuarioDto.getApellido());
+        usuario.setNombre(usuarioDto.getNombre()+ " " + usuarioDto.getApellidos());
         usuario.setEmail(usuarioDto.getEmail());
         //Encriptamos la contraseña
         usuario.setPassword(passwordEncoder.encode(usuarioDto.getPassword()));
@@ -59,8 +59,8 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
     private UsuarioDto mapToUsuarioDto(Usuario usuario){
         UsuarioDto usuarioDto = new UsuarioDto();
         String[]str = usuario.getNombre().split("");
-        usuarioDto.setPrimerNombre(str[0]);
-        usuarioDto.setApellido(str[1]);
+        usuarioDto.setNombre(str[0]);
+        usuarioDto.setApellidos(str[1]);
         usuarioDto.setEmail(usuario.getEmail());
         return usuarioDto;
     }
@@ -68,6 +68,14 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         Rol rol = new Rol();
         rol.setNombre("ROL_ADMIN");
         return  rolRepositorio.save(rol);
+    }
+
+    public List<Usuario> findAll(){
+        return usuarioRepositorio.findAll();
+    }
+
+    public Usuario save(Usuario usuario){
+        return usuarioRepositorio.save(usuario);
     }
 
 

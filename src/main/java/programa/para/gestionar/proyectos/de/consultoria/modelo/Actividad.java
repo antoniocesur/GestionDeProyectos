@@ -5,22 +5,16 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Consultor {
+public class Actividad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne
-    private Usuario usuario;
+    @ManyToOne
+    private Tarea tarea;
 
-    @Column
-    private String nombre;
-    @Column
-    private float horaCosteEmpresa;
-    @Column
-    private float horaCosteCliente;
-
-
+    private int horas;
+    private String observaciones;
 
 }

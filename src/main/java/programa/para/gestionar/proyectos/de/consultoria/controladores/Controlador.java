@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import programa.para.gestionar.proyectos.de.consultoria.departamento.UsuarioDto;
+import programa.para.gestionar.proyectos.de.consultoria.dto.UsuarioDto;
 import programa.para.gestionar.proyectos.de.consultoria.modelo.Usuario;
 import programa.para.gestionar.proyectos.de.consultoria.servicios.ServicioUsuario;
 

@@ -14,10 +14,17 @@ public class Cliente {
 
     @Column(name="empresa", unique = true, nullable = false)
     private String empresa;
-    @Column(name="empresa", unique = true, nullable = false)
+    @Column(name="contacto", unique = true, nullable = false)
     private String contacto;
     private String email;
     private String telefono;
     private String direccion;
+    @Column(nullable = true)
+    private String observaciones;
+
+    public Cliente(String empresa, String contacto){
+        this.empresa=empresa;
+        this.contacto=contacto;
+    }
 
 }

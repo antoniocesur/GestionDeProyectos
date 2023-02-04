@@ -24,11 +24,22 @@ public class Proyecto {
     // formación autoliderazgo, seleccion de personal, mentorización , otra formacion
     private String tipoProyecto;
 
-    @Column
+    @Column(nullable = true)
     private LocalDate fechaInicio;
-    @Column
+    @Column(nullable = true)
     private LocalDate fechaFin;
 
+    public Proyecto(){
+        this.fechaInicio=LocalDate.now();
+        this.fechaFin=LocalDate.now().plusMonths(2);
+    }
+    public Proyecto(String nombre, Cliente cliente, String tipoProyecto ){
+        this.nombre=nombre;
+        this.cliente=cliente;
+        this.tipoProyecto=tipoProyecto;
+        this.fechaInicio=LocalDate.now();
+        this.fechaFin=LocalDate.now().plusMonths(2);
+    }
 
 
 }

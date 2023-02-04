@@ -20,7 +20,10 @@ public class Rol {
     @Column(nullable = false, unique = true)
     private String nombre;
     @ManyToMany(mappedBy = "roles")
-    private List<Usuario>usuarios;
+    private List<Usuario> usuarios;
 
+    public Rol(String nombre){
+        this.nombre=nombre;
+    }
 
 }
