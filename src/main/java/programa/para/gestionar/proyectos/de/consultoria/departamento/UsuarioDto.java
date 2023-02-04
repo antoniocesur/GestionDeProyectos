@@ -14,9 +14,9 @@ public class UsuarioDto {
 
     private Long id;
     @NotEmpty
-    private String primerNombre;
+    private String nombre;
     @NotEmpty
-    private String apellido;
+    private String apellidos;
     @NotEmpty(message = "El email no debería estar vacío")
     @Email
     private String email;
