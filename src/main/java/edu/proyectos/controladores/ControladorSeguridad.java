@@ -13,18 +13,13 @@ import edu.proyectos.servicios.ServicioUsuario;
 import java.util.List;
 
 @Controller
-public class Controlador {
+public class ControladorSeguridad {
     private ServicioUsuario servicioUsuario;
 
-    public Controlador(ServicioUsuario servicioUsuario) {
+    public ControladorSeguridad(ServicioUsuario servicioUsuario) {
         this.servicioUsuario = servicioUsuario;
     }
 
-    //Metodo para manejar la solicitud de la página de inicio
-    @GetMapping("/index")
-    public String inicio() {
-        return "index";
-    }
 
     //método de controlador para manejar la solicitud de formulario de registro de usuario
     @GetMapping("/registro")

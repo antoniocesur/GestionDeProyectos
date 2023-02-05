@@ -1,5 +1,6 @@
 package edu.proyectos.servicios;
 
+import edu.proyectos.modelo.Proyecto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.proyectos.modelo.Tarea;
@@ -17,6 +18,9 @@ public class ServicioTarea {
     }
     public List<Tarea> findAll(){
         return tareaRepositorio.findAll();
+    }
+    public List<Tarea> findByProyecto(Proyecto proyecto){
+        return tareaRepositorio.findByProyecto(proyecto);
     }
     public Tarea save(Tarea tarea){
         return tareaRepositorio.save(tarea);

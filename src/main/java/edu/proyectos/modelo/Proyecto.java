@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
+
 //Un proyecto se compone de tareas
 @Data
 @Entity
@@ -20,9 +22,15 @@ public class Proyecto {
     @ManyToOne
     private Cliente cliente;
 
+    @ManyToOne
+    private Usuario consultor;
+
     //Aqui tendra el servicio que se dará direccion por objetivo,
     // formación autoliderazgo, seleccion de personal, mentorización , otra formacion
     private String tipoProyecto;
+
+    @OneToMany(mappedBy = "proyecto")
+    private List<Tarea> tareas;
 
     @Column(nullable = true)
     private LocalDate fechaInicio;

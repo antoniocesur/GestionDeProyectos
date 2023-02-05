@@ -22,6 +22,9 @@ public class Cliente {
     @Column(nullable = true)
     private String observaciones;
 
+    public Cliente(){
+
+    }
     public Cliente(String empresa, String contacto){
         this.empresa=empresa;
         this.contacto=contacto;
