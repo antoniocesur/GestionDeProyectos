@@ -1,5 +1,6 @@
 package edu.proyectos.servicios;
 
+import edu.proyectos.modelo.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.proyectos.modelo.Proyecto;
@@ -17,6 +18,9 @@ public class ServicioProyecto {
     }
     public List<Proyecto> findAll(){
         return proyectoRepositorio.findAll();
+    }
+    public List<Proyecto> findByCliente(Cliente cliente){
+        return proyectoRepositorio.findByCliente(cliente);
     }
     public Proyecto save(Proyecto proyecto){
         return proyectoRepositorio.save(proyecto);

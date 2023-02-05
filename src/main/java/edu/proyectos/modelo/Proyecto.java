@@ -23,14 +23,15 @@ public class Proyecto {
     private Cliente cliente;
 
     @ManyToOne
+    @JoinColumn(name="consultor_id")
     private Usuario consultor;
 
     //Aqui tendra el servicio que se dará direccion por objetivo,
     // formación autoliderazgo, seleccion de personal, mentorización , otra formacion
     private String tipoProyecto;
 
-    @OneToMany(mappedBy = "proyecto")
-    private List<Tarea> tareas;
+    /*@OneToMany(mappedBy = "proyecto")
+    private List<Tarea> tareas;*/
 
     @Column(nullable = true)
     private LocalDate fechaInicio;

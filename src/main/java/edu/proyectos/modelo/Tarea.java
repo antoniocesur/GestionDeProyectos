@@ -19,6 +19,7 @@ public class Tarea {
     @JoinColumn(name="proyecto_id")
     private Proyecto proyecto;
     @ManyToOne
+    @JoinColumn(name = "responsable_id")
     private Usuario responsable;
 
     @Column
@@ -31,9 +32,6 @@ public class Tarea {
 
     @OneToMany
     private List<Actividad> actividades;
-
-    @ManyToOne
-    private Usuario usuario;
 
     public Tarea(){
         this.fechaInicio=LocalDate.now();

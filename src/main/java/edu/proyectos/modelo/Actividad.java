@@ -12,6 +12,7 @@ public class Actividad {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "tarea_id")
     private Tarea tarea;
 
     private int horas;

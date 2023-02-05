@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:replace="fragments/general :: headerfiles"></div>
+    <title>Clientes</title>
 </head>
 <body>
+    <div th:replace="~{fragments/general :: navbar}"></div>
+    <div class="container">
+        <h1>Clientes</h1>
+        <div class="row">
+            <div class="col-3"><h3>Empresa</h3></div>
+            <div class="col-3"><h3>Contacto</h3></div>
+            <div class="col-3"><h3>Correo electrónico</h3></div>
+            <div class="col-2"><h3>Proyectos</h3></div>
 
+        </div>
+        <div class="row" th:each="cliente:${listaClientes}">
+            <div class="col-3"><span th:text="${cliente.empresa}"></span></div>
+            <div class="col-3" th:text="${cliente.contacto}"></div>
+            <div class="col-3" th:text="${cliente.email}"></div>
+            <div class="col-2"><a th:href="'/proyectos/cliente/' + ${cliente.id}">Ver</a></div>
+        </div>
+    </div>
 </body>
 </html>

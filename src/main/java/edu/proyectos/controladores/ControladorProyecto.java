@@ -1,6 +1,7 @@
 package edu.proyectos.controladores;
 
 import edu.proyectos.modelo.Proyecto;
+import edu.proyectos.servicios.ServicioCliente;
 import edu.proyectos.servicios.ServicioProyecto;
 import edu.proyectos.servicios.ServicioTarea;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,18 @@ public class ControladorProyecto {
     ServicioProyecto servicioProyecto;
     @Autowired
     ServicioTarea servicioTarea;
+    @Autowired
+    ServicioCliente servicioCliente;
 
     @GetMapping("/proyectos")
     public String listarProyectos(Model model){
         model.addAttribute("listaProyectos", servicioProyecto.findAll());
+        return "proyectos";
+    }
+
+    @GetMapping("/proyectos/cliente/{id}")
+    public String listarProyectosCliente(@PathVariable long id, Model model){
+        model.addAttribute("listaProyectos", servicioProyecto.findByCliente(servicioCliente.findById(id)));
         return "proyectos";
     }
 
@@ -27,9 +36,6 @@ public class ControladorProyecto {
         Proyecto proyecto=servicioProyecto.findById(id);
         model.addAttribute("proyecto", proyecto);
         model.addAttribute("listaTareas", servicioTarea.findByProyecto(proyecto));
-        System.out.println(proyecto.getTareas().get(1).getNombre());
-        //model.addAttribute("listaTareas", servicioTarea.findByProyecto(proyecto));
-
         return "proyecto";
     }
 }
