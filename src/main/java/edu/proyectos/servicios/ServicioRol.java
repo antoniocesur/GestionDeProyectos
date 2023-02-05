@@ -12,8 +12,8 @@ public class ServicioRol {
     @Autowired
     RolRepositorio repositorio;
 
-    public Rol findByName(String name){
-        return repositorio.findByName(name);
+    public Rol findByNombre(String name){
+        return repositorio.findByNombre(name);
     }
 
     public List<Rol> findAll(){

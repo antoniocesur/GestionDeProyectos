@@ -40,7 +40,7 @@ public class GestionDeProyectosApplication {
 			if(servicioUsuarios.findAll().size()<1) {
 				//La contraseña es 1234
 				Usuario admin=new Usuario("Carola", "carola@gmail.com", "https://i.pravatar.cc/150?u=carola@gmail.com", "$2a$12$QO8HqfpzA7cUGlyDFQ5/FeKfH.laaMRIFsQiQX8oCVStWX0HavrTW");
-				admin.addRol(servicioRol.findByName("ROLE_ADMIN"));
+				admin.addRol(servicioRol.findByNombre("ROLE_ADMIN"));
 				servicioUsuarios.save(admin);
 				for (int i = 0; i < 10; i++) {
 					String correo="maria" + i + "@benito.com";

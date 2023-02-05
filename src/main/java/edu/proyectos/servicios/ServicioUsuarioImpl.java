@@ -35,9 +35,9 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         //Encriptamos la contraseña
         usuario.setPassword(passwordEncoder.encode(usuarioDto.getPassword()));
 
-        Rol rol = rolRepositorio.findByName("ROL_ADMIN");
+        Rol rol = rolRepositorio.findByNombre("ROL_ADMIN");
         if (rol == null){
-            rol = verificarRolExixtente();
+            rol = verificarRolExistente();
         }
         usuario.setRoles(Arrays.asList(rol));
         usuarioRepositorio.save(usuario);
@@ -64,7 +64,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         usuarioDto.setEmail(usuario.getEmail());
         return usuarioDto;
     }
-    private  Rol verificarRolExixtente(){
+    private  Rol verificarRolExistente(){
         Rol rol = new Rol();
         rol.setNombre("ROL_ADMIN");
         return  rolRepositorio.save(rol);
